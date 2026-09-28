@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function BookStore() {
+export default function Home() {
   const [livros, setLivros] = useState([]);
   const [titulo, setTitulo] = useState("");
   const [autor, setAutor] = useState("");
@@ -12,7 +12,7 @@ export default function BookStore() {
   
   async function carregarLivros() {
     try {
-      const response = await fetch("http://localhost:3001/livros");
+      const response = await fetch("http://localhost:55667/livros");
 
       const data = await response.json();
 
@@ -29,7 +29,7 @@ export default function BookStore() {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3001/livros", {
+      const response = await fetch("http://localhost:55667/livros", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +60,7 @@ export default function BookStore() {
   return (
     <main className="min-h-screen bg-amber-800 px-6 py-10">
       <div className="mx-auto max-w-5xl">
-        {/* Cabeçalho */}
+        
         <header className="mb-10 text-center">
           <h1 className="text-4xl font-bold text-amber-200">
             BookStore
@@ -71,7 +71,7 @@ export default function BookStore() {
           </p>
         </header>
 
-        {/* Lista de livros */}
+        
         <section className="rounded-xl bg-white p-6 shadow-md">
           <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
@@ -92,7 +92,7 @@ export default function BookStore() {
             </button>
           </div>
 
-          {/* Livros */}
+          
           {livros.length === 0 ? (
             <div className="rounded-lg border border-dashed border-gray-300 p-8 text-center text-gray-500">
               Nenhum livro carregado.
@@ -104,7 +104,7 @@ export default function BookStore() {
                   key={livro.id}
                   className="rounded-xl border border-gray-200 bg-gray-50 p-5 transition hover:-translate-y-1 hover:shadow-lg"
                 >
-                  <div className="mb-4 flex h-32 items-center justify-center rounded-lg bg-blue-100 text-5xl">
+                  <div className="mb-4 flex h-32 items-center justify-center rounded-lg bg-amber-100 text-5xl">
                     📖
                   </div>
 
@@ -126,7 +126,7 @@ export default function BookStore() {
           )}
         </section>
 
-        {/* Cadastro */}
+        
         <section className="mt-8 rounded-xl bg-white p-6 shadow-md">
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-gray-800">
@@ -142,7 +142,7 @@ export default function BookStore() {
             onSubmit={cadastrarLivro}
             className="grid grid-cols-1 gap-5 md:grid-cols-2"
           >
-            {/* Título */}
+            
             <div className="md:col-span-2">
               <label className="mb-2 block text-sm font-semibold text-gray-700">
                 Título
@@ -158,7 +158,7 @@ export default function BookStore() {
               />
             </div>
 
-            {/* Autor */}
+            
             <div>
               <label className="mb-2 block text-sm font-semibold text-gray-700">
                 Autor
@@ -174,7 +174,7 @@ export default function BookStore() {
               />
             </div>
 
-            {/* Preço */}
+            
             <div>
               <label className="mb-2 block text-sm font-semibold text-gray-700">
                 Preço
@@ -192,7 +192,7 @@ export default function BookStore() {
               />
             </div>
 
-            {/* Botão */}
+            
             <div className="md:col-span-2">
               <button
                 type="submit"
@@ -204,13 +204,17 @@ export default function BookStore() {
           </form>
         </section>
 
-        {/* Mensagem */}
+        
         {mensagem && (
           <div className="mt-6 rounded-lg bg-amber-100 p-4 text-center font-semibold text-amber-700">
             {mensagem}
           </div>
         )}
       </div>
+      {/* <a href="/Home" className="mt-6 inline-block rounded-lg bg-amber-600 px-5 py-3 font-semibold text-white transition hover:bg-amber-700">
+          Versão sem Backend
+        </a>*/}
     </main>
   );
 }
+    

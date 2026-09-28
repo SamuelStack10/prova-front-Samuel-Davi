@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 
-export default function BookStore() {
+export default function Home() {
   
   const [livros, setLivros] = useState([
     
@@ -34,7 +34,7 @@ export default function BookStore() {
   }
 
   return (
-    <main className="min-h-screen bg-amber-900 px-6 py-10">
+    <main className="min-h-screen bg-amber-800 px-6 py-10">
       <div className="mx-auto max-w-5xl">
 
         {/* Cabeçalho */}
